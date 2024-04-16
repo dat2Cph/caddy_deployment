@@ -33,7 +33,13 @@ Build the fat jar with Maven Package. Now you have a `app.jar` fil in the projec
 
 ### 3. Prepare your VM
 
-SSH to your VM and clone this repo in the `~jetty` home folder. Use cd to enter the `caddy_deployment" folder. Take a look.
+SSH to your VM and clone this repo in the `~jetty` home folder.
+
+```bash
+git clone https://github.com/dat2Cph/caddy_deployment.git
+```
+
+Use cd to enter the `caddy_deployment" folder. Take a look.
 
 ### 4. Setup the database on the VM
 
@@ -162,7 +168,7 @@ Create a DNS record for `fourthings.yourdomain.dk` to direct to your VM's IP
 ### 11. Spin up the docker containers and enjoy the rest
 
 ```bash
-docker compose up -d
+sudo docker compose up -d
 ```
 
 ### 12. Debugging and error finding
@@ -171,37 +177,37 @@ So what if the setup doesn't work?
 
 The first shot is to look at the log files of the various containers.
 
-- `docker ps` to check if the containers are running (including Postgres)
-- `docker logs caddy` to check if the reverse proxy or https goes wrong
-- `docker logs fourthings` to check if the Javalin web app is running
+- `sudo docker ps` to check if the containers are running (including Postgres)
+- `sudo docker logs caddy-reverse-proxy` to check if the reverse proxy or https goes wrong
+- `sudo docker logs fourthings` to check if the Javalin web app is running
 
 If there is somethings wrong:
 
-1. Stop the containers: `docker compose down`
+1. Stop the containers: `sudo docker compose down`
 2. Correct your files
-3. Spin up the containers again: `docker compose up -d`
+3. Spin up the containers again: `sudo docker compose up -d`
 
 If something is wrong with your Javalin project, and you need to rebuild the project and copy the
 fat jar to the VM again - as in step 5 above. Then we need to rebuild the images. This demands
-that we shut down the running containers with `docker compose down`. Then we need to remove the
+that we shut down the running containers with `sudo docker compose down`. Then we need to remove the
 built Javalin container and its image.
 
 ```bash
-docker ps -a
-docker rm [container_id_or_name]
+sudo docker ps -a
+sudo docker rm [container_id_or_name]
 ```
 
 Then remove the image:
 
 ```bash
-docker images
-docker rmi [image_id_or_name]
+sudo docker images
+sudo docker rmi [image_id_or_name]
 ```
 
 And then rebuild images and containers:
 
 ```bash
-docker compose up -d
+sudo docker compose up -d
 ```
 
 Now the updated version of your Javalin web app is up'n running.

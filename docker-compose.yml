@@ -19,7 +19,7 @@ services:
 
   fourthings:
     build:
-      context: ./fourthings
+      context: ./fourthingsplus
       dockerfile: Dockerfile
     container_name: fourthings
     environment:
