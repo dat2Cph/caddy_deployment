@@ -1,0 +1,8 @@
+fourthing.jonbertelsen.dk {
+	reverse_proxy fourthings:7070
+}
+
+jonbertelsen.dk {
+	root * /srv/
+	file_server
+}

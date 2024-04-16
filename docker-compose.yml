@@ -1,0 +1,46 @@
+services:
+
+  caddy:
+    image: caddy:2.7.6
+    restart: unless-stopped
+    container_name: caddy-reverse-proxy
+    cap_add:
+      - NET_ADMIN
+    networks:
+      - backend
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./site:/srv
+      - ./caddy_data:/data
+      - ./caddy_config:/config
+
+  fourthings:
+    build:
+      context: ./fourthings
+      dockerfile: Dockerfile
+    container_name: fourthings
+    environment:
+      - DEPLOYED=PROD
+      - JDBC_USER=postgres
+      - JDBC_PASSWORD=datdat2024!
+      - JDBC_CONNECTION_STRING=jdbc:postgresql://db:5432/%s?currentSchema=public
+      - JDBC_DB=fourthingsplus
+    ports:
+      - "7070:7070"
+    networks:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  caddy_data:
+    external: true
+  caddy_config:
+    external: true
+
+networks:
+  backend:
+    external: true
+
