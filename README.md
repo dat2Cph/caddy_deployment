@@ -73,7 +73,7 @@ Open the Caddyfile with nano.
 
 It looks like this:
 
-```json
+```plaintext
 fourthings.jonbertelsen.dk {
   reverse_proxy fourthings:7070
 }
