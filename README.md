@@ -2,6 +2,10 @@
 
 This is how you can deploy a [Javalin](https://javalin.io/) webproject on a virtual machine (VM) running [Ubuntu](https://ubuntu.com/) and [Docker](https://www.docker.com/).
 
+You can follow this [video tutorial](https://cphbusiness.cloud.panopto.eu/Panopto/Pages/Sessions/List.aspx?folderID=322ab819-f0ca-4fc4-8e76-b15600a65ecd) that explains the steps below
+
+![Deployment](https://github.com/dat2Cph/content/blob/main/linux_and_deployment/images/deployment.png)
+
 ## Prerequstites
 
 - A configured Virtual Machine setup up after this [tutorial](https://github.com/dat2Cph/content/tree/main/linux_and_deployment) step 1-7. The VM is running on [Digital Ocean](https://www.digitalocean.com/)
