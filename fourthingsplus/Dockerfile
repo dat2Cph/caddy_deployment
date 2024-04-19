@@ -1,5 +1,5 @@
-# Start with the Amazon Corretto 17 base image
-FROM amazoncorretto:17
+# Start with Amazon Corretto 17 Alpine base image
+FROM amazoncorretto:17-alpine
 
 # Copy the jar file into the image
 COPY ./app.jar /app.jar

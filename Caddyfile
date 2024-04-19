@@ -1,6 +1,10 @@
-fourthing.jonbertelsen.dk {
+# Javalin web applications
+
+fourthings.jonbertelsen.dk {
 	reverse_proxy fourthings:7070
 }
+
+# Static files served by Caddy (in sites folder)
 
 jonbertelsen.dk {
 	root * /srv/
